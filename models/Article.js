@@ -5,21 +5,23 @@ var Schema = mongoose.Schema;
 
 // Using Schema, create a new ArticleSchema object
 var ArticleSchema = new Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    link: {
-        type: String,
-        required: true
-    },
-    // "comment" is an object that stores a Comment id
-    // "ref" links the ObjectId to the Comment model
-    // Lets us populate the Article with an associated Comment
-    comment: {
-        type: Schema.Types.ObjectId,
-        ref: "Comment"
-    }
+  title: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  link: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  // "comments" is an object that stores a Comment id
+  // "ref" links the ObjectId to the Comment model
+  // Lets us populate the Article with any associated Comments
+  comments: {
+    type: Schema.Types.ObjectId,
+    ref: "Comment"
+  }
 });
 
 // Create our model using the ArticleSchema, using mongoose's model method
