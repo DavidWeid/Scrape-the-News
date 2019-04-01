@@ -15,6 +15,11 @@ var ArticleSchema = new Schema({
     required: true,
     unique: true
   },
+  teaser: {
+    type: String,
+    require: true,
+    unique: true
+  },
   // "comments" is an object that stores a Comment id
   // "ref" links the ObjectId to the Comment model
   // Lets us populate the Article with any associated Comments

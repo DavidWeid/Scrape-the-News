@@ -1,0 +1,11 @@
+<h1>Saved Articles Page</h1>
+<button id="home"><a href="/">Home</a></button>
+<button id="saved-articles"><a href="/saved-articles">Saved Articles</a></button>
+<section id="article-section">
+    {{#each articles}}
+    <article data-id='{{this._id}}'>
+        <h1 class="title">{{this.title}}</h1>
+        <h3 class="teaser"><a href="{{this.link}}">{{this.teaser}}</a></h3>
+    </article>
+    {{/each}}
+</section>

@@ -5,10 +5,6 @@ var routes = require("./routes/routes.js");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
-// Scrape with axios and cheerio
-// var axios = require("axios");
-// var cheerio = require("cheerio");
-
 // Require all models
 var db = require("./models");
 
@@ -34,7 +30,7 @@ app.set("view engine", "handlebars");
 app.use(routes);
 // Connect to the Mongo DB ("newScraper")
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newScraper";
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // When the server starts, create and save a new User document to the db
 db.User.create({ name: "Troye Sivan" })
