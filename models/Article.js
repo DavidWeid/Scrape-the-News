@@ -23,10 +23,12 @@ var ArticleSchema = new Schema({
   // "comments" is an object that stores a Comment id
   // "ref" links the ObjectId to the Comment model
   // Lets us populate the Article with any associated Comments
-  comments: {
-    type: Schema.Types.ObjectId,
-    ref: "Comment"
-  }
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Comment"
+    }
+  ]
 });
 
 // Create our model using the ArticleSchema, using mongoose's model method

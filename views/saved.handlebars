@@ -4,8 +4,21 @@
 <section id="article-section">
     {{#each articles}}
     <article data-id='{{this._id}}'>
-        <h1 class="title">{{this.title}}</h1>
-        <h3 class="teaser"><a href="{{this.link}}">{{this.teaser}}</a></h3>
+        <h3 class="title">{{this.title}}</h3>
+        <h5 class="teaser"><a href="{{this.link}}">{{this.teaser}}</a></h5>
+        <button class="viewCommentsBtn" data-id='{{this._id}}'><a href="/saved-articles/article-comments/{{this._id}}">Comment</a></button>
     </article>
     {{/each}}
 </section>
+
+{{!-- <script>
+    $(document).on("click", ".viewCommentsBtn", function() {
+        var id = $(this).data("id");
+        console.log(id);
+        $.ajax("/saved-articles/article-comments/" + id, {
+            type: "GET"
+        }).then(function(data) {
+            console.log(data);
+        })
+    });
+</script> --}}

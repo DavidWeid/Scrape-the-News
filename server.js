@@ -33,13 +33,13 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newScraper";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // When the server starts, create and save a new User document to the db
-db.User.create({ name: "Troye Sivan" })
-  .then(function(dbUser) {
-    console.log(dbUser);
-  })
-  .catch(function(err) {
-    console.log(err.message);
-  });
+// db.User.create({ name: "Troye Sivan" })
+//   .then(function(dbUser) {
+//     console.log(dbUser);
+//   })
+//   .catch(function(err) {
+//     console.log(err.message);
+//   });
 
 // Start the server
 app.listen(PORT, function() {

@@ -1,0 +1,62 @@
+<h1>One article and its comments</h1>
+<button id="home"><a href="/">Home</a></button>
+<button id="saved-articles"><a href="/saved-articles">Saved Articles</a></button>
+<section id="article-section">
+    {{#each article}}
+    <article data-id='{{this._id}}'>
+        <h3 class="title">{{this.title}}</h3>
+        <h5 class="teaser"><a href="{{this.link}}">{{this.teaser}}</a></h5>
+        {{!-- <button class="addCommentBtn" data-id='{{this._id}}'>Add Comment</button> --}}
+        <div class="articleCommentsDiv">
+            <h4>Comments</h4>
+            {{#each comments}}
+                <p>{{this.title}}</p>
+                <p>{{this.body}}</p>
+                <button data-id='{{this._id}}' id="deletecomment">Delete Comment</button>
+                <br/>
+            {{/each}}
+        </div>
+
+        <div class="addCommentDiv">
+            <h4>Add Comment</h4>
+            <input id="titleinput" name="title"/>
+            <textarea id="bodyinput" name="body"></textarea>
+            <button data-id='{{this._id}}' id="savecomment">Save Comment</button>
+        </div>
+    </article>
+    {{/each}}
+</section>
+
+<script>
+
+    $(document).on("click", "#savecomment", function() {
+        var thisId = $(this).attr("data-id");
+
+        $.ajax({
+            method: "POST",
+            url: "/api/articles/" + thisId,
+            data: {
+                title: $("#titleinput").val(),
+                body: $("#bodyinput").val()
+            }
+        }).then(function(data) {
+            console.log(data);
+            $("#notes").empty();
+            location.reload();
+        });
+
+    });
+
+    $(document).on("click", "#deletecomment", function() {
+        var thisId = $(this).attr("data-id");
+
+        $.ajax({
+            method: "POST",
+            url: "/api/articles/comment/" + thisId
+        }).then(function(data) {
+            console.log(data);
+            location.reload();
+        })
+    })
+
+</script>

@@ -6,10 +6,10 @@ var showScrapedArticles = function(articles) {
   // Create an article section with a title and teaser section sub-sections
   for (var i = 0; i < 10; i++) {
     var newArticle = $("<article>");
-    var articleTitle = $("<h1>")
+    var articleTitle = $("<h3>")
       .addClass("title")
       .text(articles[i].title);
-    var articleTeaser = $("<h3>")
+    var articleTeaser = $("<h5>")
       .addClass("teaser")
       .append(
         "<a href='" + articles[i].link + "'>" + articles[i].teaser + "</a>"
@@ -41,19 +41,31 @@ $(document).on("click", "#scrape-articles", function() {
 // When User clicks "Save" button, grab the Article's title, link, and teaser
 // Send data to "/api/save/article" via POST to save the article in the db
 $(document).on("click", ".saveArticleBtn", function() {
-
   var newArticle = {};
 
-  newArticle.title = $(this).parent("article").children(".title").text();
-  newArticle.link = $(this).parent("article").children(".teaser").children("a").attr("href");
-  newArticle.teaser = $(this).parent("article").children(".teaser").text();
+  newArticle.title = $(this)
+    .parent("article")
+    .children(".title")
+    .text();
+  newArticle.link = $(this)
+    .parent("article")
+    .children(".teaser")
+    .children("a")
+    .attr("href");
+  newArticle.teaser = $(this)
+    .parent("article")
+    .children(".teaser")
+    .text();
 
   console.log(newArticle);
 
   $.ajax("/api/save/article", {
-      type: "POST",
-      data: newArticle
+    type: "POST",
+    data: newArticle
   }).then(function(data) {
-      console.log(data);
-  })
+    console.log(data);
+  });
+
+  $(this).parent("article").empty();
+
 });
