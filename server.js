@@ -6,8 +6,8 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 
 // Scrape with axios and cheerio
-var axios = require("axios");
-var cheerio = require("cheerio");
+// var axios = require("axios");
+// var cheerio = require("cheerio");
 
 // Require all models
 var db = require("./models");
@@ -32,8 +32,9 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 // Give server access to routes
 app.use(routes);
-// Connect to the Mongo DB ("")
-mongoose.connect("mongodb://localhost/db", { useNewUrlParser: true });
+// Connect to the Mongo DB ("newScraper")
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newScraper";
+mongoose.connect(MONGODB_URI);
 
 // When the server starts, create and save a new User document to the db
 db.User.create({ name: "Troye Sivan" })
