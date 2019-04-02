@@ -3,7 +3,7 @@ var showScrapedArticles = function(articles) {
   $("#article-section").empty();
 
   // Replace with the first 10 scraped articles
-  // Create an article section with a title and teaser section sub-sections
+  // Create an article section with title and teaser sub-sections
   for (var i = 0; i < 10; i++) {
     var newArticle = $("<article>");
     var articleTitle = $("<h3>")
@@ -66,6 +66,7 @@ $(document).on("click", ".saveArticleBtn", function() {
     console.log(data);
   });
 
-  $(this).parent("article").empty();
-
+  $(this)
+    .parent("article")
+    .empty();
 });

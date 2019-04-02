@@ -9,7 +9,7 @@ var UserSchema = new Schema({
     type: String,
     unique: true
   },
-  // "articles" is an object that stores a Article id
+  // "articles" is an array (lets us store multiple Articles per User) with objects that store an Article id
   // "ref" links the ObjectId to the Article model
   // Lets us populate the User with any associated Articles
   articles: [

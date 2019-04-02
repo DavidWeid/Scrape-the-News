@@ -20,7 +20,7 @@ var ArticleSchema = new Schema({
     require: true,
     unique: true
   },
-  // "comments" is an object that stores a Comment id
+  // "comments" is an array (allows us to push multiple comments in) that stores a objects with a Comment id
   // "ref" links the ObjectId to the Comment model
   // Lets us populate the Article with any associated Comments
   comments: [

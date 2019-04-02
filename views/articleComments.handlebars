@@ -1,37 +1,47 @@
 <h1>One article and its comments</h1>
 <button id="home"><a href="/">Home</a></button>
 <button id="saved-articles"><a href="/saved-articles">Saved Articles</a></button>
+
+<!-- This section displays the articles -->
 <section id="article-section">
+    <!-- Each article is populated in an "article" tag -->
     {{#each article}}
     <article data-id='{{this._id}}'>
+
         <h3 class="title">{{this.title}}</h3>
         <h5 class="teaser"><a href="{{this.link}}">{{this.teaser}}</a></h5>
-        {{!-- <button class="addCommentBtn" data-id='{{this._id}}'>Add Comment</button> --}}
+
+        <!-- Comments on the article display here with a button to delete the comment -->
         <div class="articleCommentsDiv">
             <h4>Comments</h4>
             {{#each comments}}
-                <p>{{this.title}}</p>
-                <p>{{this.body}}</p>
-                <button data-id='{{this._id}}' id="deletecomment">Delete Comment</button>
-                <br/>
+            <p>{{this.title}}</p>
+            <p>{{this.body}}</p>
+            <button data-id='{{this._id}}' id="deletecomment">Delete Comment</button>
+            <br />
             {{/each}}
         </div>
 
+        <!-- Add-comment section (with title and body), link it to the article and shows in the comments section upon submit -->
         <div class="addCommentDiv">
             <h4>Add Comment</h4>
-            <input id="titleinput" name="title"/>
+            <input id="titleinput" name="title" />
             <textarea id="bodyinput" name="body"></textarea>
             <button data-id='{{this._id}}' id="savecomment">Save Comment</button>
         </div>
+
     </article>
     {{/each}}
 </section>
 
 <script>
 
-    $(document).on("click", "#savecomment", function() {
+    // When User clicks the "save comment" button
+    $(document).on("click", "#savecomment", function () {
+        // Grab the article id
         var thisId = $(this).attr("data-id");
 
+        // Send a POST request to update the article with our comment
         $.ajax({
             method: "POST",
             url: "/api/articles/" + thisId,
@@ -39,24 +49,29 @@
                 title: $("#titleinput").val(),
                 body: $("#bodyinput").val()
             }
-        }).then(function(data) {
+        }).then(function (data) {
             console.log(data);
             $("#notes").empty();
+            // reload the page to show the new comment in the comments-section
             location.reload();
         });
 
     });
 
-    $(document).on("click", "#deletecomment", function() {
+    // When User clicks the "delete comment" button
+    $(document).on("click", "#deletecomment", function () {
+        // Grab the comment id
         var thisId = $(this).attr("data-id");
 
+        // Make a POST request to remove the comment from the db
         $.ajax({
             method: "POST",
             url: "/api/articles/comment/" + thisId
-        }).then(function(data) {
+        }).then(function (data) {
             console.log(data);
+            // reload the page to show the comment is now gone
             location.reload();
-        })
-    })
+        });
+    });
 
 </script>

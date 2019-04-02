@@ -30,6 +30,7 @@ app.set("view engine", "handlebars");
 app.use(routes);
 // Connect to the Mongo DB ("newScraper")
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newScraper";
+// If deployed, use the deployed database, otherwise use the local newScraper database
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // When the server starts, create and save a new User document to the db
