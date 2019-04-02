@@ -1,25 +1,37 @@
-<h1>Saved Articles Page</h1>
+<div class="bg-2">
+    <div class="caption">
+        <h3>Saved Articles</h3>
+    </div>
+</div>
+
 <!-- Navigation Buttons -->
-<button id="home"><a href="/">Home</a></button>
-<button id="saved-articles"><a href="/saved-articles">Saved Articles</a></button>
+<div class="navigation">
+    <div class="btnDiv">
+        <button class="navbtn btn waves-effect waves-light" id="home"><a href="/">Home</a></button>
+        <button class="navbtn btn waves-effect waves-light" id="saved-articles"><a href="/saved-articles">Saved
+                Articles</a></button>
+    </div>
+</div>
 
 <!-- Saved Articles populate here -->
-<section id="article-section">
-    <!-- Each article populates in an "article" tag -->
-    {{#each articles}}
-    <article data-id='{{this._id}}'>
-        <h3 class="title">{{this.title}}</h3>
-        <h5 class="teaser"><a href="{{this.link}}">{{this.teaser}}</a></h5>
+<div class="container">
+    <section id="article-section">
+        <!-- Each article populates in an "article" tag -->
+        {{#each articles}}
+        <article data-id='{{this._id}}'>
+            <h3 class="title">{{this.title}}</h3>
+            <h5 class="teaser"><a href="{{this.link}}">{{this.teaser}}</a></h5>
 
-        <!-- Button redirects user to the comments-page for the chosen article -->
-        <button class="viewCommentsBtn" data-id='{{this._id}}'>
-            <a href="/saved-articles/article-comments/{{this._id}}">Comment</a>
-        </button>
-        <!-- Button to delete the saved article from our db -->
-        <button data-id='{{this._id}}' id="deleteArticleBtn">Delete</button>
-    </article>
-    {{/each}}
-</section>
+            <!-- Button redirects user to the comments-page for the chosen article -->
+            <div class="viewCommentsBtn btn" data-id='{{this._id}}'>
+                <a href="/saved-articles/article-comments/{{this._id}}">Comment</a>
+            </div>
+            <!-- Button to delete the saved article from our db -->
+            <div class="btn" data-id='{{this._id}}' id="deleteArticleBtn">Delete</div>
+        </article>
+        {{/each}}
+    </section>
+</div>
 
 <script>
     // When user clicks delete button

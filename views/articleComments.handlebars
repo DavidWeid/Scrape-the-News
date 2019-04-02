@@ -1,38 +1,55 @@
-<h1>One article and its comments</h1>
-<button id="home"><a href="/">Home</a></button>
-<button id="saved-articles"><a href="/saved-articles">Saved Articles</a></button>
+<div class="bg-3">
+    <div class="caption-3">
+        {{#each article}}
+        <h5>{{this.title}}</h5>
+        {{/each}}
+        <h6>Comments</h6>
+    </div>
+</div>
+
+<!--Navigation Buttons-->
+<div class="navigation">
+    <div class="btnDiv">
+        <button class="navbtn btn waves-effect waves-light" id="home"><a href="/">Home</a></button>
+        <button class="navbtn btn waves-effect waves-light" id="saved-articles"><a href="/saved-articles">Saved
+                Articles</a></button>
+    </div>
+</div>
 
 <!-- This section displays the articles -->
-<section id="article-section">
-    <!-- Each article is populated in an "article" tag -->
-    {{#each article}}
-    <article data-id='{{this._id}}'>
+<div class="container">
+    <section id="article-section">
+        <!-- Each article is populated in an "article" tag -->
+        {{#each article}}
+        <article data-id='{{this._id}}'>
 
-        <h3 class="title">{{this.title}}</h3>
-        <h5 class="teaser"><a href="{{this.link}}">{{this.teaser}}</a></h5>
+            <h3 class="title">{{this.title}}</h3>
+            <h5 class="teaser"><a href="{{this.link}}">{{this.teaser}}</a></h5>
 
-        <!-- Comments on the article display here with a button to delete the comment -->
-        <div class="articleCommentsDiv">
-            <h4>Comments</h4>
-            {{#each comments}}
-            <p>{{this.title}}</p>
-            <p>{{this.body}}</p>
-            <button data-id='{{this._id}}' id="deletecomment">Delete Comment</button>
-            <br />
-            {{/each}}
-        </div>
+            <!-- Comments on the article display here with a button to delete the comment -->
+            <div class="articleCommentsDiv">
+                <h4 id="comments-label">Comments</h4>
+                {{#each comments}}
+                <div class="commentDiv">
+                    <h5 class="comment-title">{{this.title}}</h5>
+                    <h6 class="comment-body">{{this.body}}</h6>
+                    <div class="btn" data-id='{{this._id}}' id="deletecomment">Delete Comment</div>
+                </div>
+                {{/each}}
+            </div>
 
-        <!-- Add-comment section (with title and body), link it to the article and shows in the comments section upon submit -->
-        <div class="addCommentDiv">
-            <h4>Add Comment</h4>
-            <input id="titleinput" name="title" />
-            <textarea id="bodyinput" name="body"></textarea>
-            <button data-id='{{this._id}}' id="savecomment">Save Comment</button>
-        </div>
+            <!-- Add-comment section (with title and body), link it to the article and shows in the comments section upon submit -->
+            <div class="addCommentDiv">
+                <h4>Add Comment</h4>
+                <input id="titleinput" placeholder="Title" name="title" />
+                <textarea id="bodyinput" placeholder="Body" name="body"></textarea>
+                <div class="btn" data-id='{{this._id}}' id="savecomment">Save Comment</div>
+            </div>
 
-    </article>
-    {{/each}}
-</section>
+        </article>
+        {{/each}}
+    </section>
+</div>
 
 <script>
 

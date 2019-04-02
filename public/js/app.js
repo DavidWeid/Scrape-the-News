@@ -6,16 +6,16 @@ var showScrapedArticles = function(articles) {
   // Create an article section with title and teaser sub-sections
   for (var i = 0; i < 10; i++) {
     var newArticle = $("<article>");
-    var articleTitle = $("<h3>")
+    var articleTitle = $("<h4>")
       .addClass("title")
       .text(articles[i].title);
-    var articleTeaser = $("<h5>")
+    var articleTeaser = $("<h6>")
       .addClass("teaser")
       .append(
         "<a href='" + articles[i].link + "'>" + articles[i].teaser + "</a>"
       );
-    var saveArticleBtn = $("<button>")
-      .addClass("saveArticleBtn")
+    var saveArticleBtn = $("<div>")
+      .addClass("saveArticleBtn btn")
       .text("Save");
 
     $(newArticle).append(articleTitle, articleTeaser, saveArticleBtn);
@@ -34,6 +34,7 @@ $(document).on("click", "#scrape-articles", function() {
   }).then(function(scrapedArticles) {
     console.log("Scrape Complete");
     console.log(scrapedArticles);
+    $("#scrape-directions").empty();
     showScrapedArticles(scrapedArticles);
   });
 });

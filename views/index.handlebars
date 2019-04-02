@@ -1,9 +1,24 @@
-<h1>Main Page</h1>
+<div class="bg-1">
+    <div class="caption">
+        <h3 id="main-title">NPR News Scraper</h3>
+        <h5>Powered By Mongo</h5>
+    </div>
+</div>
+
 <!-- Navigation buttons -->
-<button id="home"><a href="/">Home</a></button>
-<button id="saved-articles"><a href="/saved-articles">Saved Articles</a></button>
-<button id="scrape-articles">Scrape Articles</button>
+<div class="navigation">
+    <div class="btnDiv">
+        <div class="navbtn btn waves-effect waves-light" id="home"><a href="/">Home</a></div>
+        <div class="navbtn btn waves-effect waves-light" id="saved-articles"><a href="/saved-articles">Saved
+                Articles</a></div>
+        <div class="navbtn btn waves-effect waves-light" id="scrape-articles">Scrape Articles</div>
+    </div>
+</div>
 
 <!-- Articles populate here when the user clicks "Scrape Articles" -->
-<section id="article-section">
-</section>
+<div class="container">
+    <div id="scrapeDirectionsDiv">
+        <h3 id="scrape-directions">Scrape to Show Articles!</h3>
+    </div>
+    <section id="article-section"></section>
+</div>
