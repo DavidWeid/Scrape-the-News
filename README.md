@@ -2,7 +2,7 @@
 
 A web app that lets users view and save articles, as well as leave comments and delete comments on the latest news (thanks to Mongoose and Cheerio).
 
-App is live [here](https://agile-earth-52779.herokuapp.com/)!
+App is live [here](https://npr-newscrape.herokuapp.com/)!
 
 Future updates
   1. Warnings when deleting saved article or a comment
