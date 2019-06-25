@@ -72,13 +72,20 @@ a {
   position: relative;
 }
 
-.btnDiv {
+/* .btnDiv {
   margin: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+} */
+
+.btnDiv {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navbtn,
@@ -161,10 +168,10 @@ article .saveArticleBtn {
   right: 0;
   bottom: 28px;
 }
-
+/* 
 .articleCommentsDiv {
 
-}
+} */
 
 .commentDiv {
   margin-bottom: 28px;
@@ -185,14 +192,14 @@ article .saveArticleBtn {
   font-weight: 500;
   text-decoration: underline;
 }
-
+/* 
 .comment-title {
 
 }
 
 .comment-body {
 
-}
+} */
 
 #deletecomment {
   margin-top: 20px;
@@ -205,4 +212,9 @@ article .saveArticleBtn {
 
 .addCommentDiv .btn {
   margin-top: 24px;
+}
+
+::placeholder {
+  color: black;
+  opacity: 0.50;
 }
